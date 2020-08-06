@@ -1,0 +1,195 @@
+<head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body data-barba = "wrapper"  class = "green-background" style="font-family:'FoundersGrotesk-Medium';">
+<div class="header " style="background-color: #e27429;height:760px;">
+    <div class= 'row'>
+        <img src="/images/gheebkg.PNG" class="w3-col l9" style ="height:660px;position:relative;margin-top:0px; margin-left:0px;">
+        <div class="top-left">
+            <a class="logo" href="/"><img src="/images/modiLogo3.png" style="max-height:80px; max-width:90px;margin-top:0px; position:absolute;"></a>
+        </div>
+        <div class="w3-col l3">
+            <div class = 'top-right'>    
+                <ul class="horizontal-list hidden-xs" style="padding: 0px 0px;">
+                    <li>
+                        <a  href="#" type="button">SIGNIN</a>
+                    </li>
+                    <li>
+                        <a  href="#" type="button">SIGNUP</a>
+                    </li>
+                    <li>
+                        <a class="js-modal-button " href="/shopping-cart/" type="button">CART(<span class="badge" style="font-size: 14px;">{{session.cart.totalQty}}</span>)
+                        </a>
+                       
+                        
+                    </li>
+                    </ul>
+                <button class="menu-toggle" type="button">
+                    <span class="bar top"></span>
+                    <span class="bar bottom"></span>
+                </button>
+            </div>
+            
+            <div style="text-align:center;padding: 200px 30px 200px 20px; " class="from-bottom">
+                <h3>Here at Modi's dairy, enjoy the luxurious richness of pure A2 milk, and A2 milk products.</h3><br>
+                <a href="#">SHOP NOW</a>
+            </div>
+        </div>   
+    </div>
+</div>   
+<div class="productSingle grey-background">
+    <div  style ="padding:15px 15px;"> <h3>Modi Ghee</h3></div>
+    <div class= "from-bottom" style ="padding:15px 15px;"><h3>Shop now</h3></div>
+    <div style="align-content: stretch; float:right;padding: 0px 0px 0px 20%"><img src = "/images/modiGhee.png"style="height:600px;width:100%;"></div>
+    
+    <div  style= "padding: 0px 0px 0px 85%;">
+        <div class="dropdown">
+  <button class="dropbtn">Add to cart</button>
+  <div class="dropdown-content">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="/add-to-cart/5f0b25916418be751454bcb5">Link 3</a>
+  </div>
+</div>
+</div>
+    
+</div>
+
+<div class="productDouble">
+    <div style="padding: 0px 0px;position:relative;text-align:center;">
+       <img style="height:660px; width:100%;;" src="/images/gheebkg.PNG">
+       <div class="bottom-left"style="padding:15px 15px 50px 15px;">A2 milk</div>
+       <div class="bottom-left dropdown"style="padding:15px 15px 15px 0px;"><button class="dropbtn">Add to cart</button>
+  <div class="dropdown-content">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </div></div>
+       
+    </div>
+    <div style="padding: 0px 0px;position:relative;text-align:center;">
+        <img style="height:660px; width:100%;" src="/images/gheebkg.PNG">
+         <div class="bottom-left"style="padding:15px 15px 50px 15px;">Buffalo milk</div>
+       <div class="bottom-left dropdown"style="padding:15px 15px 15px 0px;"><button class="dropbtn">Add to cart</button>
+        <div class="dropdown-content">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </div></div>
+    </div>
+
+</div>
+
+<div class="productDouble">
+  <div style="padding:30% 0% 0% 30%; width:10px;">
+    A2 Butter
+  </div>
+   <!-- Swiper -->
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">Slide 1</div>
+      <div class="swiper-slide">Slide 2</div>
+      <div class="swiper-slide">Slide 3</div>
+      
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+
+</div>
+
+<div class="productDouble">
+  <div style="padding:30% 0% 0% 30%; width:10px;">
+    A2 Butter
+  </div>
+   <!-- Swiper -->
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">Slide 1</div>
+      <div class="swiper-slide">Slide 2</div>
+      <div class="swiper-slide">Slide 3</div>
+      
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="../package/swiper-bundle.min.js"></script>
+ <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>  
+ <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script>
+    const faders = document.querySelectorAll(".fade-in");
+    const sliders = document.querySelectorAll('.from-bottom');
+
+    observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) =>{
+            if(entry.intersectionRatio >0){
+                entry.target.style.animation = 'from-bottom1 2s forwards ease-out';
+            }
+            else{
+                entry.target.style.animation = 'none';
+            }
+        });
+
+    });
+
+    const appearOptions = {
+  threshold: 0,
+  rootMargin: "0px 0px -250px 0px"
+};
+
+const appearOnScroll = new IntersectionObserver(function(
+  entries,
+  appearOnScroll
+) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) {
+      return;
+    } else {
+      entry.target.classList.add("appear");
+      appearOnScroll.unobserve(entry.target);
+    }
+  });
+},
+appearOptions);
+
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
+
+    sliders.forEach(slider => {
+        observer.observe(slider);
+    });
+
+/*Swiper initialization*/
+ var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });    
+</script>
