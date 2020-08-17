@@ -7,10 +7,12 @@ var Cart = require('../models/cart');
 const { Router } = require('express');
 const Razorpay = require('razorpay');
 var shortid = require('shortid');
+var cors = require('cors');
+const { app } = require('firebase');
+const bodyParser = require('body-parser');
+const fetch  = require('node-fetch');
 
-
-
-
+router.use(bodyParser.json());
 
 const razorpay = new  Razorpay({
   key_id:'rzp_test_2eJE3rP3gEWqze',
@@ -20,10 +22,15 @@ const razorpay = new  Razorpay({
 var csrfProtection = csurf();
 router.use(csrfProtection);
 
+router.use(function (req, res, next) {
+  res.locals.login = req.isAuthenticated();
+  next();
+});
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var products = Product.find(function(err,docs){
-    res.render('shop/index', { title: 'Shopping Cart', products: docs});  
+    res.render('shop/index', { title: 'Modi\'s Dairy', products: docs});  
   });
   
 });
@@ -95,8 +102,47 @@ router.get('/checkout', function(req,res,next){
     return res.redirect('/shopping-cart');
   }
   var cart = new Cart(req.session.cart);
-  res.render('shop/checkout', {total:cart.totalPrice});
+  res.render('shop/checkout', {csrfToken: req.csrfToken(), total:cart.totalPrice});
 });
+
+router.post('razorpay', async function(req,res,next){
+  /*if(!req.session.cart){
+    return res.redirect('/shopping-cart');
+  } */
+  var cart = new Cart(req.session.cart);
+  
+  const payment_capture = 1;
+  const amount = cart.totalPrice;
+  const currency = 'INR';
+
+    const options = {
+      amount: amount * 100,
+      currency,
+      receipt: shortid.generate(),
+      payment_capture,
+      
+    }
+  
+    try {
+      const response = await razorpay.orders.create(options);
+     
+      
+      res.json({
+        id: response.id,
+        currency: response.currency,
+        amount: response.amount
+      }); s
+     
+
+      
+    } catch (error) {
+      console.log(error);
+    }		
+		
+}); 
+
+
+
 
   
 module.exports = router;
