@@ -3,7 +3,7 @@
         <h1>Checkout</h1>
         <h4>Your Total: ${{total}}</h4>
         
-        <form action='/razorpay' method="post" id="checkout-form">
+            <div id="checkout-form">
        
             <div class="row">
                 <div class="col-xs-12">
@@ -14,19 +14,28 @@
                 </div>
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <label for="address">Address</label>
+                        <label for="address">Shipping Address</label>
                         <input type="text" id="address" class="form-control" required name="address">
                     </div>
                 </div>
                 <hr>
             </div>
             <input type ="hidden" name="_csrf" value="{{csrfToken}}">
-            <button  type="submit" onclick="displayRazorpay()" class="btn btn-success">Buy now</button>
-        </form>
+            <button  onclick="displayRazorpay()" class="btn btn-success">Buy now</button>
+        </div>
     </div>
 </div>
 
 
+
+
+
+ <!-- Add Firebase products that you want to use -->
   
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-  <script src="/javascripts/checkout.js"></script>
+  <script src="javascripts/checkout.js"></script>
+  <script>
+      function temp(){
+          alert('Okay...');
+      }
+  </script>
